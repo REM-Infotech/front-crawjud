@@ -2,9 +2,11 @@
   "name": "front-crawjud",
   "version": "0.0.0",
   "private": true,
-  "main": ".vite/build/main.js",
+  "main": ".vite/build/index.js",
   "scripts": {
-    "dev": "vite",
+    "start": "electron-vite preview", // start electron app to preview production build
+    "dev": "electron-vite dev", // start dev server and electron app
+    "prebuild": "electron-vite build", // build for production
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -12,7 +14,6 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
@@ -45,6 +46,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "electron": "36.2.0",
+    "electron-vite": "^3.1.0",
     "eslint": "^9.22.0",
     "eslint-plugin-vue": "~10.0.0",
     "jiti": "^2.4.2",
