@@ -1,33 +1,19 @@
-import { initialize } from "@electron/remote/main/index";
 import { app, BrowserWindow } from "electron";
-import { join } from "path";
-
-app.setAppUserModelId("com.app.RemDevs.CrawJUD");
-
+import isDev from "electron-is-dev";
+import { resolve } from "path";
 const createWindow = async () => {
-  initialize();
-  const mainWindow = new BrowserWindow({
-    minWidth: 800,
-    minHeight: 600,
-    width: minWidth,
-    height: minHeight,
-    titleBarStyle: titleBarStyle(),
-    webPreferences: {
-      preload: join(__dirname, "../preload/index.js"),
-    },
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
   });
+
+  if (isDev) {
+    await win.loadURL("http://localhost:3000");
+  } else if (!isDev) {
+    await win.loadFile(resolve(__dirname, "../../index.html"));
+  }
 };
 
-app.whenReady().then(createWindow);
-
-app.on("window-all-closed", async () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
-});
-
-app.on("activate", () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+app.whenReady().then(() => {
+  createWindow();
 });
