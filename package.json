@@ -27,12 +27,15 @@
     "@electron-forge/plugin-fuses": "^7.8.1",
     "@electron-forge/plugin-vite": "^7.8.1",
     "@electron/fuses": "^1.8.0",
+    "@tsconfig/node22": "^22.0.1",
     "@vitejs/plugin-vue": "^5.2.4",
+    "@vue/tsconfig": "^0.7.0",
     "electron": "36.2.0",
     "electron-is-dev": "^3.0.1",
     "unplugin-vue-components": "^28.5.0",
     "vite": "^6.3.5",
-    "vite-plugin-vue-devtools": "^7.7.6"
+    "vite-plugin-vue-devtools": "^7.7.6",
+    "vue-tsc": "^2.2.10"
   },
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
